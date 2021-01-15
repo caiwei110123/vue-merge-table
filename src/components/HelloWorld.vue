@@ -15,24 +15,17 @@ export default {
       tableData: [],
       colConfigs: [
         {
-          label: '考试信息',
+          label: '项目',
           align: 'center',
+          prop: 'project',
+          width: '40px',
           type: 'label',
-          children: [
-            { prop: 'time', label: '考试时间', align: 'center' },
-            { prop: 'grade', label: '所在班级', align: 'center' },
-            { prop: 'name', label: '考生姓名', align: 'center' },
-            { prop: 'subjects', label: '考试科目', align: 'center' }
-          ]
         },
-        { prop: 'results', text1:"对" ,text2:"错", label: '考试成绩', align: 'center', type: 'radio' },
-        { prop: 'remark', label: '备注', align: 'center', type: 'input' }
+        { prop: 'standard', label: '评价标准', align: 'center', type: 'label' },
+        { prop: 'results', label: '评价结果' , radioList:[{id:1,val:"优"},{id:2,val:"良"},{id:3,val:"中"},{id:4,val:"差"}], align: 'center', type: 'radio' }
       ],
-      mergeColumns: [
-        { index: 2, name: 'time' },
-        { index: 3, name: 'grade' },
-        { index: 4, name: 'name' },
-        { index: 5, name: 'subjects' }
+       mergeColumns: [
+        { index: 2, name: 'project' },
       ]
     }
   },
@@ -47,15 +40,17 @@ export default {
     fetchData() {
       // 使用Axios调用数据 此处为模拟数据
       this.tableData = [
-        { time: '总学时', grade: '三年二班', name: '小明', subjects: '语文',results:'' },
-        { time: '总学时', grade: '三年二班', name: '小明', subjects: '数学' },
-        { time: '总学时', grade: '总成绩', name: '总成绩', subjects: '总成绩' },
-        { time: '总学时', grade: '三年一班', name: '小雷', subjects: '语文' },
-        { time: '2020-08-10', grade: '三年一班', name: '小雷', subjects: '数学' },
-        { time: '2020-08-10', grade: '总成绩', name: '总成绩', subjects: '总成绩' },
-        { time: '2020-08-11', grade: '三年三班', name: '小花', subjects: '语文' },
-        { time: '2020-08-11', grade: '三年三班', name: '小花', subjects: '数学' },
-        { time: '2020-08-11', grade: '总成绩', name: '总成绩', subjects: '总成绩' }
+        { project: '教师授课情况', standard: '有教案，备课充足',results:'' },
+        { project: '教师授课情况', standard: '教学内容充实，信息量大', results:'' },
+        { project: '教师授课情况', standard: '教学富有启发性，能给学生启迪' ,results:''},
+        { project: '教师授课情况', standard: '板书工整，设计合理', results:''},
+        { project: '教师授课情况', standard: '教师着装得体，教态大方，精神饱满' ,results:''},
+        { project: '教师授课情况', standard: '课堂教学和适应能力',results:'' },
+        { project: '学生听课听课', standard: '到课情况',results:'' },
+        { project: '学生听课听课', standard: '课堂记录',results:'' },
+        { project: '学生听课听课', standard: '课堂气氛', results:'' },
+
+
       ]
     }
   }

@@ -53,14 +53,15 @@
       
       >
 
-
-
         <template  slot-scope="scope">
             <div v-if="colConfig.type === 'radio'">
 
           <!-- <el-input  v-model="scope.row[colConfig.prop]" :disabled="colConfig.disabled" /> -->
-              <el-radio v-model="scope.row[colConfig.prop]" label="1">{{colConfig.text1}}</el-radio>
-             <el-radio v-model="scope.row[colConfig.prop]" label="2">{{colConfig.text2}}</el-radio>
+            <template v-for="obj in colConfig.radioList">
+              <el-radio v-model="scope.row[colConfig.prop]" :label="obj.id" :key="obj.id">{{obj.val}}</el-radio>
+            </template>
+              <!-- <el-radio v-model="scope.row[colConfig.prop]" label="1">{{colConfig.text1}}</el-radio> -->
+             <!-- <el-radio v-model="scope.row[colConfig.prop]" label="2">{{colConfig.text2}}</el-radio> -->
             </div>
             <div v-else-if="colConfig.type === 'input'">
                 
